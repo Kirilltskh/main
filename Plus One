@@ -1,52 +1,9 @@
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
-
-class Solution {
-   
-    public ListNode deleteDuplicates(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode current = dummy;
-
-        while (current.next != null && current.next.next != null) {
-            if (current.next.val == current.next.next.val) {
-                int dupVal = current.next.val;
-                while (current.next != null && current.next.val == dupVal) {
-                    current.next = current.next.next;
-                }
-            } else {
-                current = current.next;
-            }
-        }
-
-        return dummy.next;
-    }
-
-   
-    public int[] plusOne(int[] digits) {
-        for (int i = digits.length - 1; i >= 0; i--) {
-            if (digits[i] < 9) {
-                digits[i]++;
-                return digits;
-            }
-            digits[i] = 0;
-        }
-
-       
-        int[] newDigits = new int[digits.length + 1];
-        newDigits[0] = 1;
-        return newDigits;
-    }
-}
-
-
-
+class Solution(object):
+    def plusOne(self, digits):
+        n = len(digits)
+        for i in range(n - 1, -1, -1):
+            if digits[i] < 9:
+                digits[i] += 1
+                return digits
+            digits[i] = 0
+        return [1] + digits
