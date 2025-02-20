@@ -1,0 +1,15 @@
+def main():
+    import sys
+    from itertools import combinations
+    input = sys.stdin.read
+    data = input().splitlines()
+    N, L = map(int, data[0].split())
+    sequences = [list(map(int, data[i + 1].split())) for i in range(N)]
+    results = []
+    for a, b in combinations(range(N), 2):  
+        merged = sorted(sequences[a] + sequences[b])  
+        median = merged[L - 1]  
+        results.append(median)
+    print("\n".join(map(str, results)))
+if __name__ == '__main__':
+    main()
