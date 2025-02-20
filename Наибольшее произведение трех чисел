@@ -1,0 +1,25 @@
+import sys
+
+def main(arr):
+    arr.sort()  
+    
+    n = len(arr)
+    
+   
+    max_product_1 = arr[n-1] * arr[n-2] * arr[n-3]
+    
+    
+    if arr[0] < 0 and arr[1] < 0:
+        max_product_2 = arr[0] * arr[1] * arr[-1]
+    else:
+        max_product_2 = None
+        
+    
+    if max_product_2 is not None and max_product_2 > max_product_1:
+        return [arr[0], arr[1], arr[-1]]
+    else:
+        return [arr[n-1], arr[n-2], arr[n-3]]
+        
+data = list(map(int, sys.stdin.read().strip().split()))
+result = main(data)
+print(" ".join(map(str, result)))
