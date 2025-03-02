@@ -1,0 +1,23 @@
+import sys
+def main(n, durability, k, press_sequence):
+    press_count = [0] * n
+
+    for press in press_sequence:
+        press_count[press - 1] += 1
+
+    result = []
+    for i in range(n):
+        if press_count[i] > durability[i]:
+            result.append("YES")
+        else:
+            result.append("NO")
+
+    return result
+n = int(input())
+durability = list(map(int, input().split()))
+k = int(input())
+press_sequence = list(map(int, input().split()))
+
+status = main(n, durability, k, press_sequence)
+for line in status:
+    print(line)
